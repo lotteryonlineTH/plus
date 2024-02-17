@@ -143,6 +143,9 @@ $objCon = connectDB(); // เชื่อมต่อฐานข้อมูล
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Checkagentlottery.php">ตรวจสอบตัวแทนขาย</a>
+              </li>
                <li class="nav-item">
                 <a class="nav-link" href="addimglottery.php">เพิ่มใบลอตเตอรี่</a>
               </li>
@@ -281,7 +284,7 @@ function myFunction() {
               <h2>ตรวจสอบรางวัลลอตเตอรี่</h2>
               </div>
                <div class="col-lg-4 col-md-4 all gra">
-              <div class="product-item"><a href="#"><img src="assets/images/G4.PNG" var="123"></div>
+              <div class="product-item"><a href="Checkagentlottery.php"><img src="assets/images/G4.PNG" var="123"></div>
               <h2>ตรวจสอบตัวแทนขาย</h2>
               </div>
 </div>

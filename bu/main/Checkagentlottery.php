@@ -7,8 +7,26 @@ session_start();
 include_once("./function.php");
 $objCon = connectDB(); // เชื่อมต่อฐานข้อมูล
 
+include_once("./function.php");
+$objCon = connectDB(); // เชื่อมต่อฐานข้อมูล
 
 
+$strSQLcase = "SELECT DISTINCT namesell FROM sellproducts GROUP BY namesell;";
+$objQuerycase = mysqli_query($objCon, $strSQLcase);
+
+$rowcase = mysqli_num_rows($objQuerycase);
+
+
+
+$strSQLcasecoun = "SELECT namesell, COUNT(namesell) AS count_word FROM sellproducts GROUP BY namesell";
+$objQuerycasecoun = mysqli_query($objCon, $strSQLcasecoun);
+
+$rowcasecoun = mysqli_num_rows($objQuerycasecoun);
+
+$strSQLcasecounnumbet = "SELECT DISTINCT sellproducts.namesell,u_username FROM sellproducts LEFT JOIN user ON sellproducts.namesell = user.u_fullname GROUP BY namesell;";
+$objQuerycasecounnumbet  = mysqli_query($objCon, $strSQLcasecounnumbet);
+
+$rowcasecounnumbet = mysqli_num_rows($objQuerycasecounnumbet);
 
 ?>
 
@@ -143,10 +161,10 @@ $objCon = connectDB(); // เชื่อมต่อฐานข้อมูล
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item ">
+              <li class="nav-item active">
                 <a class="nav-link" href="Checkagentlottery.php">ตรวจสอบตัวแทนขาย</a>
               </li>
-               <li class="nav-item active">
+               <li class="nav-item ">
                 <a class="nav-link" href="addimglottery.php">เพิ่มใบลอตเตอรี่</a>
               </li>
               <li class="nav-item ">
@@ -265,52 +283,60 @@ function myFunction() {
 
 
 
-          </div>
-  <center>  <h2>  กรองหมายเลขลอตเตอรี </h2></center>
-  </br></br>
+                 </div>
+  <center>  <h2>  รายการ </h2>
 
-
-
-</div>
-
-
-
-
-
+<form method="post" action="Checkagentlotteryss.php">
+  <input type="text" id="name_customers"  name="name_customers" maxlength="10" placeholder="เบอร์โทร" style="width:60; height:8; font-size:35px;">
+</br></br><input type="submit" value="ค้นหา"style="width:60; height:8; font-size:35px;">&nbsp;&nbsp;&nbsp;
+   <input type="button" value="รีเช็ตข้อมูล" onclick="window.location='Checkagentlottery.php'"style="width:60; height:8; font-size:35px;">
+</form>
+</center>
 
 			<div class="d-flex justify-content-center h-100">
 
- <form class="imgForm" action="testpphps.php" method="post" enctype="multipart/form-data">
-                        <input type="text" name="upload_name"maxlength="6" required class="form-control" placeholder="กรองหมายเลขลอตเตอรี่"> <br>
-                         <font color="red">*อัพโหลดได้เฉพาะ .jpeg  .jpg  .png </font>
-                        <input type="file" name="upload" required   class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
-                        <button type="submit" class="btn btn-primary">อัพโหลดลอตเตอรี่</button>
-                    </form>
+				<div class="card">
+
+					<div class="card-body">
+						<form ame="formlogin" action="Checkagentlotteryss.php" method="POST" id="login" class="form-horizontal">
+							<div class="input-group form-group">
+
+								<div class="input-group-prepend">
+
+
+
+<?php
+
+
+
+ echo  "<DIV id=tbl-container>";
+     echo  "<TABLE BORDER=1 WIDTH=646 id=tbl>";
+     echo "<THEAD>";
+          echo  "<tr>";
+echo "<TH width=150>ชื่อตัวแทน</TH>";
+echo "<TH width=150>ขายลอตเตอรี่ไปแลัว</TH>";
+echo "<TH width=150>เบอร์ตัวแทน</TH>";
+ echo  "</tr>";
+echo "</THEAD>";
 
 
 
 
+while( $f = mysqli_fetch_assoc($objQuerycase) and $u = mysqli_fetch_assoc($objQuerycasecoun) and $P = mysqli_fetch_assoc($objQuerycasecounnumbet)) {
+
+ echo  "<tr>";
+    echo "<td><h4>" .$f["namesell"] .  "</h4></td> ";
+    echo "<td><h4>" .$u["count_word"] .  "ใบ</h4></td> ";
+    echo "<td><h4>" .$P["u_username"] .  "</h4></td> ";
+
+ echo "</tr>";
+     }
 
 
+  echo "</DIV>";
 
 
-
-
-
-
-
-
-
-
-							</div><center>
-							</br>
-</br>
- <form class="imgForm" action="deletelottery_action_add.php" method="post" enctype="multipart/form-data" onSubmit="if(!confirm('คุณต้องการลบข้อมูลทั้งหมดใช่ไหมค่ะ')){return false;}">
-                            <button type="submit" class="btn btn-primary" >ลบข้อมูลลอตเตอรี่ทั้งหมด</button>
-                    </form></center>
-						</form>
-					</div>
-
+    ?>
 				</div>
 
   </body>

@@ -143,6 +143,9 @@ $objCon = connectDB(); // เชื่อมต่อฐานข้อมูล
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="Checkagentlottery.php">ตรวจสอบตัวแทนขาย</a>
+              </li>
                <li class="nav-item">
                 <a class="nav-link" href="addimglottery.php">เพิ่มใบลอตเตอรี่</a>
               </li>

@@ -143,6 +143,9 @@ $objCon = connectDB(); // เชื่อมต่อฐานข้อมูล
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
+                <li class="nav-item ">
+                <a class="nav-link" href="Checkagentlottery.php">ตรวจสอบตัวแทนขาย</a>
+              </li>
                <li class="nav-item">
                 <a class="nav-link" href="addimglottery.php">เพิ่มใบลอตเตอรี่</a>
               </li>
@@ -289,10 +292,10 @@ function myFunction() {
 
 </form></center>
 <center>
- <form method="post" action="deletelottery_action.php">
+ <form method="post" action="deletelottery_action.php" onSubmit="if(!confirm('คุณต้องการลบข้อมูลทั้งหมดใช่ไหมค่ะ')){return false;}">
 
                     </select>
-<input type="submit" value="รีเช็ตล้างค่าเลขทั้งหมด">&nbsp;&nbsp;&nbsp;</br></br></br></br>
+<input type="submit" value="รีเช็ตล้างค่าเลขทั้งหมด" >&nbsp;&nbsp;&nbsp;</br></br></br></br>
 
 </form></center>
 

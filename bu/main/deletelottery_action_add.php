@@ -28,6 +28,14 @@ function delAllFileInfolder($folder=''){
 mkdir("assets/images/P3");
 
 
+$strSQL = "DELETE FROM numbetall";
+$objQuery = mysqli_query($objCon, $strSQL) or die(mysqli_error($objCon));
+
+
+$strSQLall = "DELETE FROM sellproducts";
+$objQuerys = mysqli_query($objCon, $strSQLall) or die(mysqli_error($objCon));
+
+
 //$strSQL = "DELETE FROM numbetall";
 
 
